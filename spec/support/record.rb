@@ -1,4 +1,7 @@
+ActiveRecord::Base.include Multilingual::Glue
+
 class Record < ActiveRecord::Base
+  has_multilingual :title
 end
 
 RSpec.configure do |config|

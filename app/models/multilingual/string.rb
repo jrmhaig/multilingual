@@ -8,5 +8,16 @@ module Multilingual
     def to_s locale = 'en'
       multilingual_translations.select { |t| t.locale == locale.to_s }.first.text
     end
+
+    def translate translations = {}
+      translations.each_pair do |locale, text|
+        multilingual_translations << Multilingual::Translation.new(
+          locale: locale,
+          text: text,
+          multilingual_string: self
+        )
+      end
+      save
+    end
   end
 end
