@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Multilingual
   module Glue
     def self.included(base)

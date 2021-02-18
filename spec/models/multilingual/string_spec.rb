@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe Multilingual::String, type: :model do
   let(:english) { 'The quick brown fox' }
   let(:french) { 'Le renard brun rapide' }
 
-  it { should have_many :multilingual_translations }
+  it { is_expected.to have_many :multilingual_translations }
 
   describe '#to_s' do
     subject(:string) do
@@ -12,11 +14,10 @@ RSpec.describe Multilingual::String, type: :model do
         record: Record.new,
         multilingual_translations: [
           Multilingual::Translation.new(locale: 'en', text: english),
-          Multilingual::Translation.new(locale: 'fr', text: french),
+          Multilingual::Translation.new(locale: 'fr', text: french)
         ]
       )
     end
-
 
     it 'returns the English by default' do
       # TODO: Make this configurable

@@ -1,0 +1,23 @@
+require:
+  - rubocop-rails
+  - rubocop-rspec
+
+AllCops:
+  Exclude:
+    - spec/dummy/db/schema.rb
+  NewCops: enable
+
+Lint/EmptyBlock:
+  Exclude:
+    - config/routes.rb
+
+Metrics/BlockLength:
+  IgnoredMethods:
+    - describe
+
+Naming/PredicateName:
+  AllowedMethods:
+    - has_multilingual
+
+Style/Documentation:
+  Enabled: false

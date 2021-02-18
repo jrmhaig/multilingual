@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Multilingual
   class HasMultilingual
     def initialize(klass, name, options)
@@ -12,6 +14,7 @@ module Multilingual
     end
 
     private
+
     def define_getters
       define_instance_getter
       define_class_getter
@@ -23,10 +26,8 @@ module Multilingual
       end
     end
 
-    def define_class_getter
-    end
+    def define_class_getter; end
 
-    def define_setters
-    end
+    def define_setters; end
   end
 end
