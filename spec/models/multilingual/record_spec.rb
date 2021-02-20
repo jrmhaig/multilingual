@@ -9,5 +9,9 @@ RSpec.describe Record do
     subject(:title) { described_class.new.title }
 
     it { is_expected.to be_a Multilingual::String }
+
+    it 'has a valid multilingual string' do
+      expect(title).to be_valid
+    end
   end
 end

@@ -22,7 +22,7 @@ module Multilingual
 
     def define_instance_getter
       @klass.send :define_method, @name do |*args|
-        Multilingual::String.new(*args)
+        Multilingual::String.new(*args, record: self)
       end
     end
 
