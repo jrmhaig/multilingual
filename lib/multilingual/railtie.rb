@@ -1,19 +1,19 @@
+# frozen_string_literal: true
+
 require 'multilingual'
 
 module Multilingual
   require 'rails'
 
   class Railtie < Rails::Railtie
-    initializer 'multilingual.insert_into_active_record' do |app|
+    initializer 'multilingual.insert_into_active_record' do
       ActiveSupport.on_load :active_record do
         Multilingual::Railtie.insert
       end
     end
 
     def self.insert
-      if defined?(ActiveRecord)
-        ActiveRecord::Base.send(:include, Multilingual::Glue)
-      end
+      ActiveRecord::Base.include Multilingual::Glue if defined?(ActiveRecord)
     end
   end
 end
