@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-ActiveRecord::Base.include Multilingual::Glue
-
 class Record < ApplicationRecord
   has_multilingual :title
 end
