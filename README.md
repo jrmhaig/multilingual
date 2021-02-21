@@ -9,7 +9,7 @@ allows for the string to be displayed according to the desired locale.
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'multilingual'
+gem 'multilingual', git: 'https://github.com/jrmhaig/multilingual'
 ```
 
 And then execute:
