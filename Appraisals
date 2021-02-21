@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 appraise 'rails-6.0' do
   gem 'rails', '~> 6.0'
 end
@@ -14,4 +16,3 @@ appraise 'rails-head' do
     gem 'rails'
   end
 end
-

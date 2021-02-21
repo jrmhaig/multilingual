@@ -8,8 +8,8 @@ gemfile:
   - gemfiles/rails_6.0.gemfile
   - gemfiles/rails_6.1.gemfile
   - gemfiles/rails_head.gemfile
-
 matrix:
   allow_failures:
     - rvm: ruby-head
     - gemfile: gemfiles/rails_head.gemfile
+script: bundle exec rspec

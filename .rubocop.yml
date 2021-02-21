@@ -5,6 +5,7 @@ require:
 AllCops:
   Exclude:
     - spec/dummy/db/schema.rb
+    - gemfiles/*
   NewCops: enable
 
 Lint/EmptyBlock:
