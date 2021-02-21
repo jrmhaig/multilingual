@@ -2,11 +2,7 @@
 
 source "https://rubygems.org"
 
-git "https://github.com/rails/arel.git" do
-  gem "arel"
-end
-
-git "https://github.com/rails/rails.git" do
+git "https://github.com/rails/rails.git", branch: "main" do
   gem "rails"
 end
 
