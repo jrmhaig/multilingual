@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
   spec.summary     = 'Multilingual support for Active Record fields.'
   spec.description = 'Multilingual support for Active Record fields.'
   spec.license     = 'MIT'
-  spec.required_ruby_version = '>= 3.0.0'
+  spec.required_ruby_version = '>= 2.6.0'
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
   # to allow pushing to a single host or delete this section to allow pushing to any host.
@@ -23,7 +23,9 @@ Gem::Specification.new do |spec|
 
   spec.files = Dir['{app,config,db,lib}/**/*', 'MIT-LICENSE', 'Rakefile', 'README.md']
 
-  spec.add_dependency 'rails', '~> 6.1.2', '>= 6.1.2.1'
+  spec.add_dependency 'rails', '>= 6.0'
+
+  spec.add_development_dependency 'appraisal'
   spec.add_development_dependency 'pry'
   spec.add_development_dependency 'rspec-rails', '~> 4.0'
   spec.add_development_dependency 'rubocop-rails', '~> 2.9'
