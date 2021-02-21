@@ -3,6 +3,8 @@ Short description and motivation.
 This gem adds multilingual support to string fields in Active Record. This
 allows for the string to be displayed according to the desired locale.
 
+[![Build Status](https://travis-ci.org/jrmhaig/multilingual.svg?branch=main)](https://travis-ci.org/jrmhaig/multilingual)
+
 ## Usage
 
 ## Installation
