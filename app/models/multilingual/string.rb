@@ -8,6 +8,7 @@ module Multilingual
              foreign_key: :multilingual_string_id,
              dependent: :destroy,
              inverse_of: :multilingual_string
+    accepts_nested_attributes_for :multilingual_translations
 
     def to_s(locale = 'en')
       multilingual_translations.select { |t| t.locale == locale.to_s }.first.text

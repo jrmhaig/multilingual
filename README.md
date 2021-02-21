@@ -38,6 +38,18 @@ class MyModel
 end
 ```
 
+To create an instance with translations:
+
+```ruby
+my_model = MyModel.new(
+  title: {
+    en: 'Text in English',
+    fr: 'Texte en français',
+    cy: 'Testun yn Gymraeg'
+  }
+)
+```
+
 To fetch the multilingual string in the desired locale:
 
 ```ruby
