@@ -13,6 +13,7 @@ module Multilingual
       define_setter
       define_initializer
       define_argument_modifier
+      add_active_record_callbacks
     end
 
     private
@@ -30,7 +31,7 @@ module Multilingual
         string = instance_variable_get(ivar)
 
         if string.nil?
-          string = Multilingual::String.create_or_find_by(name: name, record: self)
+          string = Multilingual::String.find_or_initialize_by(name: name, record: self)
           instance_variable_set(ivar, string)
         end
 
@@ -66,6 +67,12 @@ module Multilingual
       @klass.define_method(:multilingual_translation_attributes) do |translations|
         translations.each_pair.map { |locale, text| { locale: locale, text: text } }
       end
+    end
+
+    def add_active_record_callbacks
+      name = @name
+      @klass.send(:after_save) { send(name).save }
+      # TODO: callbacks for commit and delete/destroy
     end
   end
 end

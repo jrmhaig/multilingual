@@ -19,15 +19,17 @@ And then execute:
 $ bundle
 ```
 
-Or install it yourself as:
-```bash
-$ gem install multilingual
-```
-
 Then add this line to your `config/application.rb` file:
 
 ```ruby
 require 'multilingual/railtie'
+```
+
+Copy the database migrations and update:
+
+```bash
+bundle exec rails multilingual:install:migrations
+bundle exec rails db:migrate
 ```
 
 ## Use
@@ -58,6 +60,11 @@ To fetch the multilingual string in the desired locale:
 my_model.title.to_s(:en)
 my_model.title.to_s(:fr)
 ```
+
+## Support
+
+* Ruby 2.6, 2.7 & 3.0
+* Rails 6.0 & 6.1
 
 ## Contributing
 Contribution directions go here.

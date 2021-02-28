@@ -24,6 +24,35 @@ RSpec.describe Record do
     end
   end
 
+  describe '.create' do
+    context 'with translation options' do
+      subject(:record) { described_class.create(title: { it: italian, en: english }) }
+
+      let(:italian) { 'Divina Commedia' }
+      let(:english) { 'Devine Comedy' }
+
+      it 'creates a Multilingual::String' do
+        expect { record }.to change(Multilingual::String, :count).by 1
+      end
+
+      it 'creates the correct number of Multilingual::Translations' do
+        expect { record }.to change(Multilingual::Translation, :count).by 2
+      end
+    end
+
+    context 'without translation options' do
+      subject(:record) { described_class.create }
+
+      it 'creates a Multilingual::String' do
+        expect { record }.to change(Multilingual::String, :count).by 1
+      end
+
+      it 'does not create any Multilingual::Translations' do
+        expect { record }.not_to change(Multilingual::Translation, :count)
+      end
+    end
+  end
+
   describe '#title' do
     subject(:title) { described_class.new.title }
 

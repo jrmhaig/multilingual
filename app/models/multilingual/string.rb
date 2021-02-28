@@ -11,7 +11,7 @@ module Multilingual
     accepts_nested_attributes_for :multilingual_translations
 
     def to_s(locale = 'en')
-      multilingual_translations.select { |t| t.locale == locale.to_s }.first.text
+      multilingual_translations.select { |t| t.locale == locale.to_s }.first&.text
     end
 
     def translate(translations = {})

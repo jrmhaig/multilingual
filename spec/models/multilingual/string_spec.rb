@@ -10,27 +10,37 @@ RSpec.describe Multilingual::String, type: :model do
   it { is_expected.to accept_nested_attributes_for :multilingual_translations }
 
   describe '#to_s' do
-    subject(:string) do
-      described_class.new(
-        record: Record.new,
-        multilingual_translations_attributes: [
-          { locale: 'en', text: english },
-          { locale: 'fr', text: french }
-        ]
-      )
+    context 'when there are no translations' do
+      subject(:string) { described_class.new(record: Record.new) }
+
+      it 'is nil' do
+        expect(string.to_s(:en)).to be_nil
+      end
     end
 
-    it 'returns the English by default' do
-      # TODO: Make this configurable
-      expect(string.to_s).to eq english
-    end
+    context 'with translations' do
+      subject(:string) do
+        described_class.new(
+          record: Record.new,
+          multilingual_translations_attributes: [
+            { locale: 'en', text: english },
+            { locale: 'fr', text: french }
+          ]
+        )
+      end
 
-    it 'returns a known translation for a locale (by string)' do
-      expect(string.to_s('fr')).to eq french
-    end
+      it 'returns the English by default' do
+        # TODO: Make this configurable
+        expect(string.to_s).to eq english
+      end
 
-    it 'returns a known translation for a locale (by symbol)' do
-      expect(string.to_s(:fr)).to eq french
+      it 'returns a known translation for a locale (by string)' do
+        expect(string.to_s('fr')).to eq french
+      end
+
+      it 'returns a known translation for a locale (by symbol)' do
+        expect(string.to_s(:fr)).to eq french
+      end
     end
   end
 
