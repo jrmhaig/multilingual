@@ -12,4 +12,7 @@ matrix:
   allow_failures:
     - rvm: ruby-head
     - gemfile: gemfiles/rails_head.gemfile
+  exclude:
+    - rvm: 2.6
+      gemfile: gemfiles/rails_head.gemfile
 before_script: bundle exec rails db:schema:load RAILS_ENV=test
