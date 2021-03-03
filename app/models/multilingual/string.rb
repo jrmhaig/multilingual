@@ -14,6 +14,14 @@ module Multilingual
       multilingual_translations.select { |t| t.locale == locale.to_s }.first&.text
     end
 
+    def to_h(*locales)
+      multilingual_translations
+        .map { |t| [t.locale.to_sym, t.text] }
+        .select { |t| locales.empty? || locales.include?(t[0]) }
+        .to_h
+        .with_indifferent_access
+    end
+
     def translate(translations = {})
       translations.each_pair do |locale, text|
         multilingual_translations << Multilingual::Translation.new(
